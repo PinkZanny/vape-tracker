@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:vape_track/cubit/home_cubit/home_cubit_cubit.dart';
 import 'package:vape_track/screens/tab_screen.dart';
 import 'package:vape_track/utils/sharedPrefs.dart';
 
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (BuildContext context) => NavigationCubit(),
+        ),
+        BlocProvider(
+          create: (BuildContext context) => HomeCubit(),
         ),
       ],
       child: MaterialApp(

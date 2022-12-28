@@ -8,21 +8,21 @@ part 'navigation_state.dart';
 
 class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit()
-      : super(const NavigationInitial(TabBarItemWidget.home, 0, 50));
+      : super(const NavigationInitial(TabBarItemWidget.home, 0, 30));
 
   void getNavBarItem(TabBarItemWidget tabBarItemWidget) {
     switch (tabBarItemWidget) {
       case TabBarItemWidget.home:
-        emit(const NavigationInitial(TabBarItemWidget.home, 0, 50));
+        emit(const NavigationInitial(TabBarItemWidget.home, 0, 30));
         break;
       case TabBarItemWidget.activity:
-        emit(const NavigationInitial(TabBarItemWidget.activity, 1, 50));
+        emit(const NavigationInitial(TabBarItemWidget.activity, 1, 30));
         break;
       case TabBarItemWidget.juice:
-        emit(const NavigationInitial(TabBarItemWidget.juice, 2, 50));
+        emit(const NavigationInitial(TabBarItemWidget.juice, 2, 30));
         break;
       case TabBarItemWidget.settings:
-        emit(const NavigationInitial(TabBarItemWidget.settings, 3, 50));
+        emit(const NavigationInitial(TabBarItemWidget.settings, 3, 30));
         break;
     }
   }

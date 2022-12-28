@@ -34,6 +34,7 @@ class TabScreen extends StatelessWidget {
           body: Container(
             child: SafeArea(
               bottom: false,
+              top: false,
               child: Stack(
                 children: [
                   Positioned.fill(
@@ -74,157 +75,110 @@ class TabScreen extends StatelessWidget {
           bottomNavigationBar: BlocBuilder<NavigationCubit, NavigationState>(
             builder: (context, state) {
               return SafeArea(
-                bottom: false,
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(12),
-                          topRight: Radius.circular(12),
-                        ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x40000000),
-                            blurRadius: 25.0, // soften the shadow
-                            spreadRadius: 5.0, //extend the shadow
-                            offset: Offset(
-                              15.0, // Move to right 10  horizontally
-                              15.0, // Move to bottom 10 Vertically
-                            ),
-                          )
-                        ],
-                      ),
-                      padding: const EdgeInsets.only(
-                        left: 16,
-                        right: 16,
-                        bottom: 0,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                top: false,
+                child: Container(
+                  padding: const EdgeInsets.only(
+                    left: 30,
+                    right: 30,
+                    bottom: 10,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          SizedBox(
-                            height: 68,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AnimatedContainer(
-                                  duration: const Duration(milliseconds: 100),
-                                  width: state.index == 0 ? state.width : 0,
-                                  margin: const EdgeInsets.only(bottom: 6),
-                                  color: Colors.black,
-                                  height: 2,
-                                ),
-                                SizedBox(
-                                  width: 60,
-                                  height: 60,
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        BlocProvider.of<NavigationCubit>(
-                                                context)
-                                            .getNavBarItem(
-                                                TabBarItemWidget.home);
-                                      },
-                                      child: Image.asset('assets/home.png')),
-                                ),
-                                const Spacer()
-                              ],
-                            ),
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 100),
+                            width: state.index == 0 ? state.width : 0,
+                            margin: const EdgeInsets.only(bottom: 8),
+                            color: Colors.black,
+                            height: 2,
                           ),
                           SizedBox(
-                            height: 68,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AnimatedContainer(
-                                  duration: const Duration(milliseconds: 100),
-                                  width: state.index == 1 ? state.width : 0,
-                                  margin: const EdgeInsets.only(bottom: 6),
-                                  color: Constants.accentColor,
-                                  height: 2,
-                                ),
-                                SizedBox(
-                                  width: 60,
-                                  height: 60,
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        BlocProvider.of<NavigationCubit>(
-                                                context)
-                                            .getNavBarItem(
-                                                TabBarItemWidget.activity);
-                                      },
-                                      child: Image.asset('assets/pulse.png')),
-                                ),
-                                const Spacer()
-                              ],
-                            ),
+                            width: 30,
+                            height: 30,
+                            child: GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<NavigationCubit>(context)
+                                      .getNavBarItem(TabBarItemWidget.home);
+                                },
+                                child: Image.asset(
+                                  'assets/icons/home.png',
+                                  height: 30,
+                                )),
                           ),
-                          const SizedBox(
-                            width: 70,
-                          ),
-                          SizedBox(
-                            height: 68,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AnimatedContainer(
-                                  duration: const Duration(milliseconds: 100),
-                                  width: state.index == 2 ? state.width : 0,
-                                  margin: const EdgeInsets.only(bottom: 6),
-                                  color: Constants.accentColor,
-                                  height: 2,
-                                ),
-                                SizedBox(
-                                  width: 60,
-                                  height: 60,
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        BlocProvider.of<NavigationCubit>(
-                                                context)
-                                            .getNavBarItem(
-                                                TabBarItemWidget.juice);
-                                      },
-                                      child: Image.asset('assets/vape.png')),
-                                ),
-                                const Spacer()
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 68,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AnimatedContainer(
-                                  duration: const Duration(milliseconds: 100),
-                                  width: state.index == 3 ? state.width : 0,
-                                  margin: const EdgeInsets.only(bottom: 6),
-                                  color: Constants.accentColor,
-                                  height: 2,
-                                ),
-                                SizedBox(
-                                  width: 60,
-                                  height: 60,
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        BlocProvider.of<NavigationCubit>(
-                                                context)
-                                            .getNavBarItem(
-                                                TabBarItemWidget.settings);
-                                      },
-                                      child:
-                                          Image.asset('assets/settings.png')),
-                                ),
-                                const Spacer()
-                              ],
-                            ),
-                          )
                         ],
                       ),
-                    ),
-                  ],
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 100),
+                            width: state.index == 1 ? state.width : 0,
+                            margin: const EdgeInsets.only(bottom: 8),
+                            color: Colors.black,
+                            height: 2,
+                          ),
+                          SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<NavigationCubit>(context)
+                                      .getNavBarItem(TabBarItemWidget.activity);
+                                },
+                                child: Image.asset('assets/icons/pulse.png')),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 100),
+                            width: state.index == 2 ? state.width : 0,
+                            margin: const EdgeInsets.only(bottom: 8),
+                            color: Colors.black,
+                            height: 2,
+                          ),
+                          SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<NavigationCubit>(context)
+                                      .getNavBarItem(TabBarItemWidget.juice);
+                                },
+                                child: Image.asset('assets/icons/vape.png')),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 100),
+                            width: state.index == 3 ? state.width : 0,
+                            margin: const EdgeInsets.only(bottom: 8),
+                            color: Colors.black,
+                            height: 2,
+                          ),
+                          SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<NavigationCubit>(context)
+                                      .getNavBarItem(TabBarItemWidget.settings);
+                                },
+                                child:
+                                    Image.asset('assets/icons/settings.png')),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               );
             },
